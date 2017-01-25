@@ -11,6 +11,6 @@ public @interface Player
 {
 	public int id();
 	
-	public String description() default "Default description.";
+	public String name() default "Default description.";
 
 }
