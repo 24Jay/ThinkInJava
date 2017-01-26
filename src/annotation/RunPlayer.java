@@ -2,7 +2,8 @@ package annotation;
 
 import java.lang.reflect.Method;
 
-public class TestPlayer
+@Player(id=00,name="This is a class for basketball players.")
+public class RunPlayer
 {
 	@Player(id = 24, name = "Kobe Bryant")
 	public static void main()
@@ -26,15 +27,18 @@ public class TestPlayer
 	{
 		// use reflection to get all methods, and use method to get annotations
 		// Class<?> cl = TestPlayer.class;
-		for (Method m : TestPlayer.class.getDeclaredMethods())
+		for (Method m : RunPlayer.class.getDeclaredMethods())
 		{
 			// annotation is one of method's attributes
 			Player test = m.getAnnotation(Player.class);
 			if (test != null)
 			{
-				System.out.println("Id = " + test.id() + ", desc = " + test.name());
+				System.out.println("Id = " + test.id() + ", name = " + test.name());
 			}
 		}
 
+		Player player = RunPlayer.class.getAnnotation(Player.class);
+		System.out.println("Id="+player.id()+", Name="+player.name());
 	}
+	
 }
