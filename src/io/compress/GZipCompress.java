@@ -17,7 +17,10 @@ public class GZipCompress
 		/**
 		 * Read a file and compress with GZIP
 		 */
+		// char oriented
 		BufferedReader reader = new BufferedReader(new FileReader("./README.md"));
+
+		// byte oriented
 		BufferedOutputStream out = new BufferedOutputStream(
 				new GZIPOutputStream(new FileOutputStream("README.gz")));
 		int c = 0;
@@ -31,14 +34,24 @@ public class GZipCompress
 		/**
 		 * Read the compressed file
 		 */
-
+		//char oriented
 		BufferedReader in = new BufferedReader(
 				new InputStreamReader(new GZIPInputStream(new FileInputStream("README.gz"))));
 		String b;
-		while((b=in.readLine())!=null)
+		while ((b = in.readLine()) != null)
 		{
 			System.out.println(b);
 		}
 		in.close();
+
+		//byte oriented
+		System.out.println("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
+		GZIPInputStream byt = new GZIPInputStream(new FileInputStream("README.gz"));
+		int v;
+		while ((v = byt.read()) != -1)
+		{
+			System.out.print((char) v);
+		}
+		byt.close();
 	}
 }
