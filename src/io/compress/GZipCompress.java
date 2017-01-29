@@ -39,7 +39,7 @@ public class GZipCompress
 				new InputStreamReader(new GZIPInputStream(new FileInputStream("README.gz"))));
 		String b;
 		while ((b = in.readLine()) != null)
-		{
+		{              
 			System.out.println(b);
 		}
 		in.close();
