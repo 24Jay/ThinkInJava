@@ -20,6 +20,13 @@ import java.nio.channels.FileChannel;
 public class BasicChannelExample
 {
 
+	/**
+	 * Firstly, read data from file with channel and buffer ;then, write data to
+	 * the buffer,then to the channel(file)
+	 * 
+	 * @param ar
+	 * @throws IOException
+	 */
 	public static void main(String[] ar) throws IOException
 	{
 		RandomAccessFile file = new RandomAccessFile("./src/io/data.txt", "rw");
@@ -60,18 +67,16 @@ public class BasicChannelExample
 		buf.flip();
 		while (buf.hasRemaining())
 		{
-			a = buf.get();
-			System.out.println("position = " + buf.position() + ", (char)a=" + (char) a);
+			System.out.println("position=" + buf.position() + ", byte=" + (char) (buf.get()));
 		}
 
-		//if you want to write back, first switches to write mode
+		// if you want to write back, first switches to write mode
 		buf.flip();
 		System.out.println("Write back to channel : " + channel.write(buf));
 		/**
 		 * clear the buffer
-		 * 
-		 * or use buf.compact()
 		 */
+		// or use buf.compact()
 		buf.clear();
 
 		System.out.println("Buffer Info: remain=" + buf.remaining() + ", pos=" + buf.position()
