@@ -22,55 +22,62 @@ public class BasicChannelExample
 
 	public static void main(String[] ar) throws IOException
 	{
-		RandomAccessFile file = new RandomAccessFile("./src/io/BasicChannelExample.java", "rw");
+		RandomAccessFile file = new RandomAccessFile("./src/io/data.txt", "rw");
 		FileChannel channel = file.getChannel();
+		ByteBuffer buf = ByteBuffer.allocate(40);
+		System.out.println("Buffer Info: remain=" + buf.remaining() + ", pos=" + buf.position()
+				+ ", limit=" + buf.limit());
+		buf.limit(15);
+		System.out
+				.println("Channel Info : size= " + channel.size() + ", pos= " + channel.position());
 
-		ByteBuffer buf = ByteBuffer.allocate(20);
-		System.out.println("Buffer Info remain= " + buf.remaining());
-		System.out.println("Buffer Info pos= " + buf.position());
-		
+		/**
+		 * channel.read(buf) function will read a sequence of data, and return
+		 * the count of these datas. if no data read, return -1.
+		 */
+		int a = channel.read(buf);
 
-		System.out.println("Channel Info size= " + channel.size());
-		System.out.println("Channel Info pos= " + channel.position());
-		int a;
-
-		try
+		System.out.println("a === " + a);
+		/**
+		 * set position to 0 and flip() do the same thing here. During the
+		 * previous write procedure, position will increase. Then if you want to
+		 * read those datas in the buffer, you have to set position back to the
+		 * first:use flip(), shift write to read.
+		 */
+		// buf.position(0);
+		// The flip() switches the buffer from writing mode to reading mode
+		buf.flip();
+		System.out.println("Buffer Info: remain=" + buf.remaining() + ", pos=" + buf.position()
+				+ ", limit=" + buf.limit());
+		while (buf.hasRemaining())
 		{
-			while ((a = channel.read(buf)) != -1)
-			{
-				System.out.println(a);
-				System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXxxx");
-				buf.flip();
-				System.out.println("Buffer Info remain= " + buf.remaining());
-				System.out.println("Buffer Info pos= " + buf.position());
-
-				while (buf.hasRemaining())
-				{
-					System.out.println(buf.get());
-				}
-				System.out.println("YYYYYYYYYYYYYYYYYYYYYYYY");
-				System.out.println("Buffer Info remain= " + buf.remaining());
-				System.out.println("Buffer Info pos= " + buf.position());
-				buf.clear();
-//				break;
-			}
+			a = buf.get();
+			System.out.println("position = " + buf.position() + ", (char)a=" + (char) a);
 		}
-		catch (IOException e)
+		System.out.println("Write some bytes back to the buffer!");
+		buf.limit(40);
+		buf.put("899z hello world\n".getBytes());
+		buf.flip();
+		while (buf.hasRemaining())
 		{
-			e.printStackTrace();
-		}
-		finally
-		{
-			try
-			{
-				channel.close();
-				file.close();
-			}
-			catch (IOException e)
-			{
-				e.printStackTrace();
-			}
+			a = buf.get();
+			System.out.println("position = " + buf.position() + ", (char)a=" + (char) a);
 		}
 
+		//if you want to write back, first switches to write mode
+		buf.flip();
+		System.out.println("Write back to channel : " + channel.write(buf));
+		/**
+		 * clear the buffer
+		 * 
+		 * or use buf.compact()
+		 */
+		buf.clear();
+
+		System.out.println("Buffer Info: remain=" + buf.remaining() + ", pos=" + buf.position()
+				+ ", limit=" + buf.limit());
+
+		channel.close();
+		file.close();
 	}
 }
