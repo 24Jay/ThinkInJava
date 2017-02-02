@@ -21,8 +21,8 @@ public class BasicChannelExample
 {
 
 	/**
-	 * Firstly, read data from file with channel and buffer ;then, write data to
-	 * the buffer,then to the channel(file)
+	 * Firstly, read data from file with channel and buffer ; then, write data
+	 * to the buffer,then to the channel(file)
 	 * 
 	 * @param ar
 	 * @throws IOException
