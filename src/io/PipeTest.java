@@ -20,14 +20,11 @@ public class PipeTest
 	public static void main(String[] ar) throws IOException
 	{
 		newPipeTest();
-		pipeExample();
+		pipeStreamTest();
 	}
 
 	private static void newPipeTest() throws IOException
 	{
-		String s = "This is a sink pipe! This string is going to be write to the sink. "
-				+ System.currentTimeMillis();
-
 		// create a pipe
 		Pipe pp = Pipe.open();
 
@@ -43,31 +40,20 @@ public class PipeTest
 			@Override
 			public void run()
 			{
-				ByteBuffer buf = ByteBuffer.allocate(500);
-				buf.put(s.getBytes());
-				buf.flip();
+				String s = "This is a sink pipe for writing " + System.currentTimeMillis();
 
-				while (buf.hasRemaining())
+				try (Pipe.SinkChannel sinkChannel = pp.sink())
 				{
-					try
-					{
-						sink.write(buf);
-					}
-					catch (IOException e)
-					{
-						e.printStackTrace();
-					}
-					finally
-					{
-						try
-						{
-							sink.close();
-						}
-						catch (IOException e)
-						{
-							e.printStackTrace();
-						}
-					}
+					ByteBuffer buf = ByteBuffer.allocate(500);
+					buf.put(s.getBytes());
+					buf.flip();
+					while (buf.hasRemaining())
+						sinkChannel.write(buf);
+					buf.clear();
+				}
+				catch (IOException e)
+				{
+					e.printStackTrace();
 				}
 			}
 		});
@@ -79,9 +65,9 @@ public class PipeTest
 			@Override
 			public void run()
 			{
-				ByteBuffer bb = ByteBuffer.allocate(500);
-				try
+				try (Pipe.SourceChannel sourceChannel = pp.source())
 				{
+					ByteBuffer bb = ByteBuffer.allocate(500);
 					int b = source.read(bb);
 					System.out.println("Bytes : " + b);
 					bb.flip();
@@ -92,18 +78,6 @@ public class PipeTest
 				{
 					e.printStackTrace();
 				}
-				finally
-				{
-					try
-					{
-						source.close();
-					}
-					catch (IOException e)
-					{
-						e.printStackTrace();
-					}
-				}
-
 			}
 		});
 
@@ -111,7 +85,7 @@ public class PipeTest
 		read.start();
 	}
 
-	private static void pipeExample() throws IOException
+	private static void pipeStreamTest() throws IOException
 	{
 		System.out.println("*********************************");
 
@@ -171,7 +145,6 @@ public class PipeTest
 					}
 					catch (IOException e)
 					{
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
