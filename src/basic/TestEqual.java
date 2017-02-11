@@ -6,6 +6,19 @@ public class TestEqual
 	{
 		stringEqual();
 		objectEqual();
+		cloneEqual();
+	}
+
+	private static void cloneEqual()
+	{
+		System.out.println("xxxxxxxxxxxxxxxxxxxxxx ObjectEqual xxxxxxxxxx");
+		int[] a =
+			{ 2, 3, 2, 4, 5, 8 };
+		int[] b = a.clone();
+		if (a != b)
+		{
+			System.out.println("Clone means different!");
+		}
 	}
 
 	/**
@@ -16,15 +29,15 @@ public class TestEqual
 		System.out.println("xxxxxxxxxxxxxxxxxxxxxx ObjectEqual xxxxxxxxxx");
 		TestObject object = new TestObject(1, "wu");
 		TestObject object2 = new TestObject(1, "wu");
-		TestObject object3 = object;		
+		TestObject object3 = object;
 		TestObject object4 = object;
 		TestObject oo = null;
-
+		
 		if (null == oo)
 		{
 			System.out.println("object is null");
 		}
-		
+
 		if (!object.equals(object2))
 		{
 			System.out.println("object do not equal object2");
@@ -37,7 +50,7 @@ public class TestEqual
 		{
 			System.out.println("object == object3");
 		}
-		
+
 		/**
 		 * 改变object对象的值域
 		 */
@@ -45,7 +58,7 @@ public class TestEqual
 		object4.setNo(110);
 		if (object == object3)
 		{
-			System.out.println("object == object3 == object4"+object);
+			System.out.println("object == object3 == object4" + object);
 		}
 	}
 
