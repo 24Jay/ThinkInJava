@@ -15,10 +15,10 @@ public class ThinkInSwap
 		swapString();
 		swapObject();
 
-		System.out.println("xxxxxxxxxxxx重要分割线xxxxxxxxxxx");
+		System.out.println("xxxxxxxxxxxx分割线xxxxxxxxxxx");
 		//a, b指向对象实例的首地址
-		ob a = new ob(1, "zhangjie");
-		ob b = new ob(2, "fanmiao");
+		TestObject a = new TestObject(1, "zhangjie");
+		TestObject b = new TestObject(2, "fanmiao");
 		System.out.println("1, Object : a=" + a + ", b=" + b);
 		//复制一个a,b. 但是依然指向上述对象实例
 		swapObject(a, b);
@@ -30,7 +30,7 @@ public class ThinkInSwap
 	 * @param a
 	 * @param b
 	 */
-	private static void swapObject(ob aa, ob bb)
+	private static void swapObject(TestObject aa, TestObject bb)
 	{
 		/**
 		 * 这里的a,b是上述定义
@@ -39,13 +39,13 @@ public class ThinkInSwap
 		/**
 		 * 这里对aa的操作同样会对外面的a,b产生影响,因为他们指向相同的对象实例
 		 */
-		aa.count = -1;
-		bb.name = "gggg";
+		aa.setNo(-1);
+		bb.setName("gggg");
 		
 		/**
 		 * 这里交换的是指向的实例
 		 */
-		ob temp = aa;
+		TestObject temp = aa;
 		aa = bb;
 		bb = temp;
 		System.out.println("3, Object : aa=" + aa + ", bb=" + bb);
@@ -53,9 +53,9 @@ public class ThinkInSwap
 
 	private static void swapObject()
 	{
-		ob a = new ob(1, "zhangjie");
-		ob b = new ob(2, "fanmiao");
-		ob temp = a;
+		TestObject a = new TestObject(1, "zhangjie");
+		TestObject b= new TestObject(2, "fanmiao");
+		TestObject temp = a;
 		a = b;
 		b = temp;
 		System.out.println("Object : a=" + a + ", b=" + b);
@@ -84,7 +84,7 @@ public class ThinkInSwap
 
 }
 
-class ob
+/*class ob
 {
 	int count;
 	String name;
@@ -99,4 +99,4 @@ class ob
 	{
 		return "[count=" + count + ", name=" + name + "]";
 	}
-}
+}*/
