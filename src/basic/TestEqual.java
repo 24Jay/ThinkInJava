@@ -12,8 +12,7 @@ public class TestEqual
 	private static void cloneEqual()
 	{
 		System.out.println("xxxxxxxxxxxxxxxxxxxxxx ObjectEqual xxxxxxxxxx");
-		int[] a =
-			{ 2, 3, 2, 4, 5, 8 };
+		int[] a = { 2, 3, 2, 4, 5, 8 };
 		int[] b = a.clone();
 		if (a != b)
 		{
@@ -21,6 +20,15 @@ public class TestEqual
 		}
 	}
 
+	
+	/**
+	 * 这是Object的equals方法，从这里可以清楚的看到它和=的区别
+	 * 
+	 *  public boolean equals(Object obj) {
+        	return (this == obj);
+     *  }
+	 */
+	
 	/**
 	 * 当且仅当两个引用指向同一个对象实例的时候，二者相等
 	 */
@@ -32,7 +40,7 @@ public class TestEqual
 		TestObject object3 = object;
 		TestObject object4 = object;
 		TestObject oo = null;
-		
+
 		if (null == oo)
 		{
 			System.out.println("object is null");
@@ -46,9 +54,9 @@ public class TestEqual
 		{
 			System.out.println("object != object2");
 		}
-		if (object == object3)
+		if (object == object3 && object.equals(object3))
 		{
-			System.out.println("object == object3");
+			System.out.println("object == object3 and object.equals(object3)");
 		}
 
 		/**
@@ -62,37 +70,86 @@ public class TestEqual
 		}
 	}
 
+	
+	/***
+	 *  这里是String对象的equals()方法，与Object的equals方法对比来看，就十分清楚了
+	 *  
+	 *  
+	 *  
+	 *  public boolean equals(Object anObject) {
+        if (this == anObject) {
+            return true;
+        }
+        if (anObject instanceof String) {
+            String anotherString = (String)anObject;
+            int n = value.length;
+            if (n == anotherString.value.length) {
+                char v1[] = value;
+                char v2[] = anotherString.value;
+                int i = 0;
+                while (n-- != 0) {
+                    if (v1[i] != v2[i])
+                        return false;
+                    i++;
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
+	 */
+	@SuppressWarnings("null")
 	private static void stringEqual()
 	{
 		System.out.println("xxxxxxxxxxxxxxxxxxxxxx StringEqual xxxxxxxxxx");
 		/**
 		 * 这种写法是可以的，不会抛出异常
 		 */
-		String s = "hello";
-		if ("hello".equals(s))
+		String s = null;
+		if (!"hello".equals(s))
 		{
 			System.out.println("No Exception even if s=null");
+		}
+		/**
+		 * 这种写法会抛出异常
+		 */
+		try
+		{
+			if (s.equals("hhh"));
+		}
+		catch (Exception e)
+		{
+			System.out.println("Throw Null Pointer Exception!");
 		}
 
 		/**
 		 * 这样也是可以的
 		 */
-		String ss = "";
-		if ("".equals(ss))
+		String ss = new String("");
+		String sd = new String("");
+
+		if (sd == ss && sd.equals(ss))
 		{
-			System.out.println("No Exception even if s=null and \"\"");
+			System.out.println("== and equals are the same　for string");
 		}
 		if (!"  ".equals(ss))
 		{
 			System.out.println("\"\" is quite different from \"   \"");
 		}
-		/**
-		 * 这样写是不可以的，一旦s=null就会抛出异常
-		 */
-		/*
-		 * String sss = null; if (sss.equals("hhh")) {
-		 * System.out.println("Throw Null Pointer Exception!"); }
-		 */
+		
+		String name1= "zhangjie";
+		String name2= "zhangjie";
+		String name3= new String("zhangjie");
+		if(name1 == name2)
+		{
+			System.out.println("name1==name2");
+		}
+		if(name1!=name3 && name1.equals(name3))
+		{
+			System.out.println("name != name3 but name1.equals(name3)");
+		}
+
 	}
 
 }

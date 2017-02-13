@@ -6,7 +6,7 @@ package basic;
  * @author jay
  *
  */
-public class ThinkInSwap
+public class TrySwap
 {
 
 	public static void main(String[] ar)
@@ -83,20 +83,3 @@ public class ThinkInSwap
 	}
 
 }
-
-/*class ob
-{
-	int count;
-	String name;
-
-	public ob(int c, String n)
-	{
-		this.count = c;
-		this.name = n;
-	}
-
-	public String toString()
-	{
-		return "[count=" + count + ", name=" + name + "]";
-	}
-}*/
