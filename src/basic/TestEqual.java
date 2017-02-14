@@ -149,7 +149,8 @@ public class TestEqual
 		{
 			System.out.println("name != name3 but name1.equals(name3)");
 		}
-
+		
+		System.out.println("ttttt : "+("zh"=="zh"));
 	}
 
 }
