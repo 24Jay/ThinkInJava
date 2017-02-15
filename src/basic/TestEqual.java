@@ -35,11 +35,11 @@ public class TestEqual
 	private static void objectEqual()
 	{
 		System.out.println("xxxxxxxxxxxxxxxxxxxxxx ObjectEqual xxxxxxxxxx");
-		TestObject object = new TestObject(1, "wu");
-		TestObject object2 = new TestObject(1, "wu");
-		TestObject object3 = object;
-		TestObject object4 = object;
-		TestObject oo = null;
+		MyObject object = new MyObject(1, "wu");
+		MyObject object2 = new MyObject(1, "wu");
+		MyObject object3 = object;
+		MyObject object4 = object;
+		MyObject oo = null;
 
 		if (null == oo)
 		{

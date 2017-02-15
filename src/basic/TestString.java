@@ -1,6 +1,6 @@
 package basic;
 
-public class TestString
+public class TestString 
 {
 	public static void main(String[] ar)
 	{

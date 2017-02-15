@@ -17,8 +17,8 @@ public class TrySwap
 
 		System.out.println("xxxxxxxxxxxx分割线xxxxxxxxxxx");
 		//a, b指向对象实例的首地址
-		TestObject a = new TestObject(1, "zhangjie");
-		TestObject b = new TestObject(2, "fanmiao");
+		MyObject a = new MyObject(1, "zhangjie");
+		MyObject b = new MyObject(2, "fanmiao");
 		System.out.println("1, Object : a=" + a + ", b=" + b);
 		//复制一个a,b. 但是依然指向上述对象实例
 		swapObject(a, b);
@@ -30,7 +30,7 @@ public class TrySwap
 	 * @param a
 	 * @param b
 	 */
-	private static void swapObject(TestObject aa, TestObject bb)
+	private static void swapObject(MyObject aa, MyObject bb)
 	{
 		/**
 		 * 这里的a,b是上述定义
@@ -45,7 +45,7 @@ public class TrySwap
 		/**
 		 * 这里交换的是指向的实例
 		 */
-		TestObject temp = aa;
+		MyObject temp = aa;
 		aa = bb;
 		bb = temp;
 		System.out.println("3, Object : aa=" + aa + ", bb=" + bb);
@@ -53,9 +53,9 @@ public class TrySwap
 
 	private static void swapObject()
 	{
-		TestObject a = new TestObject(1, "zhangjie");
-		TestObject b= new TestObject(2, "fanmiao");
-		TestObject temp = a;
+		MyObject a = new MyObject(1, "zhangjie");
+		MyObject b= new MyObject(2, "fanmiao");
+		MyObject temp = a;
 		a = b;
 		b = temp;
 		System.out.println("Object : a=" + a + ", b=" + b);
