@@ -1,10 +1,15 @@
 package basic;
 
-
 public class ThinkInObject extends Object
 {
 
 	public static void main(String[] ar)
+	{
+		testNotify();
+		testHash();
+	}
+
+	private static void testNotify()
 	{
 		int[] a =
 			{ 1, 2, 3 };
@@ -17,13 +22,13 @@ public class ThinkInObject extends Object
 			{
 				try
 				{
-					System.out.println("A thread begin..."+this.getClass());
-//					Thread.sleep(1000);
+					System.out.println("A thread begin..." + this.getClass());
+					// Thread.sleep(1000);
 					synchronized (a)
 					{
 						a.wait();
-						System.out.println("A thread continue..."+this.getClass());
-//						this.finalize();
+						System.out.println("A thread continue..." + this.getClass());
+						// this.finalize();
 					}
 				}
 				catch (Throwable e)
@@ -41,14 +46,14 @@ public class ThinkInObject extends Object
 			{
 				try
 				{
-					System.out.println("B thread begin..."+this.getClass());
-//					Thread.sleep(1000);
+					System.out.println("B thread begin..." + this.getClass());
+					// Thread.sleep(1000);
 					synchronized (a)
 					{
 						// Thread.sleep(1000);
 						a.wait(50);
-						System.out.println("B thread continue..."+this.getClass());
-//						this.finalize();
+						System.out.println("B thread continue..." + this.getClass());
+						// this.finalize();
 					}
 				}
 				catch (Throwable e)
@@ -67,47 +72,49 @@ public class ThinkInObject extends Object
 			{
 				synchronized (a)
 				{
-					System.out.println("C thread begin...notify"+this.getClass());
+					System.out.println("C thread begin...notify" + this.getClass());
 					// a.notifyAll();
 					a.notify();
 				}
 			}
 		}).start();
 	}
+	
+	
+	private static void testHash()
+	{
+		MObject m1 = new MObject(1, "Jay");
+		MObject m2 = new MObject(1, "MM");
+		System.out.println(m1.equals(m2));
+		System.out.println(m1.hashCode());
+	}
+}
+
+class MObject
+{
+	int id;
+	String name;
+
+	public MObject(int id, String name)
+	{
+		this.id = id;
+		this.name = name;
+	}
 
 	@Override
 	public int hashCode()
 	{
-		// TODO Auto-generated method stub
-		return super.hashCode();
+		return id;
 	}
 
 	@Override
 	public boolean equals(Object obj)
 	{
-		// TODO Auto-generated method stub
-		return super.equals(obj);
-	}
-
-	@Override
-	protected Object clone() throws CloneNotSupportedException
-	{
-		// TODO Auto-generated method stub
-		return super.clone();
-	}
-
-	@Override
-	public String toString()
-	{
-		// TODO Auto-generated method stub
-		return super.toString();
-	}
-
-	@Override
-	protected void finalize() throws Throwable
-	{
-		// TODO Auto-generated method stub
-		super.finalize();
+		if (obj instanceof String)
+		{
+			return this.name == (String) obj;
+		}
+		return false;
 	}
 
 }
