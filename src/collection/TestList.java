@@ -7,6 +7,15 @@ import java.util.List;
 import java.util.Stack;
 import java.util.Vector;
 
+/**
+ * java.util.ArrayList<br>
+ * java.util.LinkedList<br>
+ * java.util.Vector<br>
+ * java.util.Stack<br>
+ * 
+ * @author jay
+ *
+ */
 public class TestList
 {
 	public static void main(String[] ar)
