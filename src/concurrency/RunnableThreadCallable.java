@@ -16,10 +16,13 @@ public class RunnableThreadCallable
 		private int countdown = 10;
 		private static int taskCount = 0;
 		private final int ID = taskCount;
+		private int priority;
 
 		public LiftThread()
 		{
 			taskCount++;
+			if (ID == 3)
+				priority = 10;
 		}
 
 		public String status()
@@ -30,6 +33,10 @@ public class RunnableThreadCallable
 		@Override
 		public void run()
 		{
+			/**
+			 * 设置线程的优先级
+			 */
+			Thread.currentThread().setPriority(Thread.MIN_PRIORITY);
 			while (countdown-- > 0)
 			{
 				System.out.print(status());
@@ -52,10 +59,13 @@ public class RunnableThreadCallable
 		private int countdown = 10;
 		private static int taskCount = 0;
 		private final int ID = taskCount;
+		private int priority;
 
 		public LiftRun()
 		{
 			taskCount++;
+			if (ID == 3)
+				priority = 10;
 		}
 
 		public String status()
@@ -66,6 +76,7 @@ public class RunnableThreadCallable
 		@Override
 		public void run()
 		{
+//			Thread.currentThread().setPriority(priority);
 			while (countdown-- > 0)
 			{
 				System.out.print(status());
@@ -88,10 +99,13 @@ public class RunnableThreadCallable
 		private int countdown = 10;
 		private static int taskCount = 0;
 		private final int ID = taskCount;
+		private int priority;
 
 		public LiftCallable()
 		{
 			taskCount++;
+			if (ID == 3)
+				priority = 10;
 		}
 
 		public String status()
@@ -102,6 +116,7 @@ public class RunnableThreadCallable
 		@Override
 		public Object call() throws Exception
 		{
+			Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
 			while (countdown-- > 0)
 			{
 				System.out.print(status());
