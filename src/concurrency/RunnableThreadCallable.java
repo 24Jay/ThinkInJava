@@ -94,6 +94,12 @@ public class RunnableThreadCallable
 
 	}
 
+	
+	/**
+	 *  可以提供返回值的Callable
+	 * @author jay
+	 *
+	 */
 	public static class LiftCallable implements Callable
 	{
 		private int countdown = 10;
