@@ -1,11 +1,14 @@
 package concurrency.evenchecker;
 
-public class EvenGenerator extends IntGenerator
+public class SynchronizedGenerator extends IntGenerator
 {
 	private int currentValue = 0;
 
+	/***
+	 * 使用同步保证不会出现不希望的线程访问
+	 */
 	@Override
-	public int next()
+	public synchronized int next()
 	{
 		currentValue++;
 		Thread.currentThread().yield();
@@ -15,7 +18,7 @@ public class EvenGenerator extends IntGenerator
 
 	public static void main(String[] ar)
 	{
-		EvenGenerator generator = new EvenGenerator();
+		SynchronizedGenerator generator = new SynchronizedGenerator();
 		/**
 		 * 这里线程设置很多的时候很快就结束了
 		 */
