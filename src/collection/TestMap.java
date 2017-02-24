@@ -21,13 +21,22 @@ import java.util.Map;
  */
 public class TestMap
 {
+	private static final int MAXIMUM_CAPACITY = 1 << 30;
+
 	public static void main(String[] ar)
 	{
 		testHashMap();
 		testLinkedHashMap();
 		testTreeMap();
+		thinkInTableSize();
 	}
 
+	/***
+	 * 
+	 * 如果两个key的hashcode不同,那么它们会在不同的位置上,因此不会冲突<br>
+	 * 如果两个key仅仅是hashcode相同的话,但是equals为false,那么它们都会存在于其中的一个链上<br>
+	 * 如果两个key的hashcode相同,而且equals为true,那么它们会被看做同一个key,只能存在其中一个<br>
+	 */
 	private static void testHashMap()
 	{
 		// Map<Integer, String> hash = new HashMap<Integer, String>();
@@ -69,6 +78,35 @@ public class TestMap
 		}
 		linked.put(1, "Java");
 		System.out.println(linked);
+	}
+
+	private static void thinkInTableSize()
+	{
+
+		System.out.println(MAXIMUM_CAPACITY);
+
+		for (int i = 1; i < 100; i++)
+		{
+			System.out.println("\n" + i + "=" + tableSizeFor(i));
+		}
+	}
+
+	private static final int tableSizeFor(int c)
+	{
+		int n = c - 1;
+		System.out.println("n=" + n);
+		n |= n >>> 1;
+		System.out.print("n|=n>>1 : " + n + "\t");
+		n |= n >>> 2;
+		System.out.print("n|=n>>2 : " + n + "\t");
+		n |= n >>> 4;
+		System.out.print("n|=n>>4 : " + n + "\t");
+		n |= n >>> 8;
+		System.out.print("n|=n>>8 : " + n + "\t");
+		n |= n >>> 16;
+		System.out.print("n|=n>>16 : " + n + "\t");
+		System.out.println("");
+		return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
 	}
 
 	/**
