@@ -1,6 +1,5 @@
-package collection;
+package collection.map;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -21,14 +20,12 @@ import java.util.Map;
  */
 public class TestMap
 {
-	private static final int MAXIMUM_CAPACITY = 1 << 30;
 
 	public static void main(String[] ar)
 	{
 		testHashMap();
 		testLinkedHashMap();
 		testTreeMap();
-		thinkInTableSize();
 	}
 
 	/***
@@ -80,34 +77,8 @@ public class TestMap
 		System.out.println(linked);
 	}
 
-	private static void thinkInTableSize()
-	{
-
-		System.out.println(MAXIMUM_CAPACITY);
-
-		for (int i = 1; i < 100; i++)
-		{
-			System.out.println("\n" + i + "=" + tableSizeFor(i));
-		}
-	}
-
-	private static final int tableSizeFor(int c)
-	{
-		int n = c - 1;
-		System.out.println("n=" + n);
-		n |= n >>> 1;
-		System.out.print("n|=n>>1 : " + n + "\t");
-		n |= n >>> 2;
-		System.out.print("n|=n>>2 : " + n + "\t");
-		n |= n >>> 4;
-		System.out.print("n|=n>>4 : " + n + "\t");
-		n |= n >>> 8;
-		System.out.print("n|=n>>8 : " + n + "\t");
-		n |= n >>> 16;
-		System.out.print("n|=n>>16 : " + n + "\t");
-		System.out.println("");
-		return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
-	}
+	
+	
 
 	/**
 	 * 实现的是SortedMap,保证Key处于排序状态
