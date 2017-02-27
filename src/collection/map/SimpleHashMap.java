@@ -5,16 +5,32 @@ import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.Set;
 
-
 /***
  * 自己实现的一个简单的HashMap<br>
+ * 
  * @author jay
  *
  * @param <K>
  * @param <V>
  */
-public class SimpleHashMap<K, V> extends AbstractMap<K, V>
+public class SimpleHashMap<K, V>
 {
+	private Object[] table;
+	private int capacity = 997;
+	private LinkedList<Entry<K, V>>[] buckets = new LinkedList[capacity];
+
+
+/*	public SimpleHashMap()
+	{
+		new SimpleHashMap(capacity);
+	}
+
+	public SimpleHashMap(int capa)
+	{
+		this.capacity = capa;
+		table = new Object[capacity];
+	}*/
+
 	static class Entry<K, V>
 	{
 		K key;
@@ -26,6 +42,8 @@ public class SimpleHashMap<K, V> extends AbstractMap<K, V>
 			this.key = k;
 			this.value = v;
 		}
+
+		
 
 		public K getKey()
 		{
@@ -46,12 +64,13 @@ public class SimpleHashMap<K, V> extends AbstractMap<K, V>
 		{
 			this.value = value;
 		}
-
+		
+		public String toString()
+		{
+			return key+"="+value;
+		}
 	}
 
-	static final int capacity = 997;
-
-	LinkedList<Entry<K, V>>[] buckets = new LinkedList[997];
 
 	public V put(K key, V value)
 	{
@@ -96,16 +115,7 @@ public class SimpleHashMap<K, V> extends AbstractMap<K, V>
 		return null;
 	}
 
-	@Override
-	public Set<java.util.Map.Entry<K, V>> entrySet()
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
-	
-	public static void main(String []ar)
+	public static void main(String[] ar)
 	{
 		SimpleHashMap<String, Integer> map = new SimpleHashMap<>();
 		map.put("zhn", 1);
