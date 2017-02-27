@@ -17,7 +17,8 @@ public class AtomIntegerTest implements Runnable
 
 	private void evenIncrement()
 	{
-		i.addAndGet(2);
+		i.addAndGet(1);
+		i.addAndGet(1);
 	}
 
 	@Override
