@@ -1,7 +1,5 @@
 package collection.map;
 
-import java.util.HashMap;
-
 /***
  * 自己实现的一个简单的HashMap<br>
  * 
@@ -71,7 +69,7 @@ public class MyHashMap<K, V>
 			if (next == null)
 				return key + "=" + value;
 			else
-				return key+"="+value+" -> "+next.toString();
+				return key + "=" + value + " -> " + next.toString();
 		}
 
 	}
@@ -81,12 +79,12 @@ public class MyHashMap<K, V>
 		int h;
 		return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
 	}
-	
+
 	public V put(K key, V value)
 	{
 		V oldValue = null;
-		int index = (capacity-1)&hash(key);
-//		int index = Math.abs(key.hashCode() % capacity);
+		int index = (capacity - 1) & hash(key);
+		// int index = Math.abs(key.hashCode() % capacity);
 		if (table[index] == null)
 			table[index] = new Entry<K, V>(key, value);
 
@@ -138,12 +136,12 @@ public class MyHashMap<K, V>
 		for (int i = 0; i < table.length; i++)
 		{
 			Entry e = table[i];
-			if(e!=null)
+			if (e != null)
 			{
 				builder.append(e.toString() + "\n");
-				
+
 			}
-//			for (Entry e = table[i]; e != null; e = e.next)
+			// for (Entry e = table[i]; e != null; e = e.next)
 		}
 
 		builder.append("}");
@@ -157,8 +155,8 @@ public class MyHashMap<K, V>
 		map.put(2, "fanmiao");
 		map.put(19, "zhangjie");
 		map.put(18, "fanmiao");
-		for(int i =1;i<90;i++)
-			map.put(i, "zhangjie_"+i);
+		for (int i = 1; i < 90; i++)
+			map.put(i, "zhangjie_" + i);
 		System.out.println(map.toString());
 	}
 }
