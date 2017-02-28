@@ -155,7 +155,7 @@ public class MyHashMap<K, V>
 		map.put(2, "fanmiao");
 		map.put(19, "zhangjie");
 		map.put(18, "fanmiao");
-		for (int i = 1; i < 90; i++)
+		for (int i = 1; i < 96; i++)
 			map.put(i, "zhangjie_" + i);
 		System.out.println(map.toString());
 	}

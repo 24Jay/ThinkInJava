@@ -4,14 +4,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import concurrency.deadLock.Philosopher.Chopstick;
-
 public class DeadlockDiningPhilosophers
 {
 
 	public static void main(String[] ar) throws InterruptedException
 	{
-		int ponder = 5;
+		int ponder = 550;
 		int size = 5;
 
 		ExecutorService exe = Executors.newCachedThreadPool();

@@ -20,7 +20,7 @@ public class WaitPerson implements Runnable
 				synchronized (this)
 				{
 					while (restaurant.meal == null)
-						wait();
+							wait();
 				}
 				System.out.println("Waitperson got..." + restaurant.meal);
 

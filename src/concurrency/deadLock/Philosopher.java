@@ -33,25 +33,6 @@ public class Philosopher implements Runnable
 		this.ponderFactor = f;
 	}
 
-	static class Chopstick
-	{
-		private int stickCount = 0;
-
-		public Chopstick()
-		{
-
-		}
-
-		public synchronized void take()
-		{
-			stickCount--;
-		}
-
-		public synchronized void drop()
-		{
-			stickCount++;
-		}
-	}
 
 	@Override
 	public void run()
