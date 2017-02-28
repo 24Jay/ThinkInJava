@@ -30,13 +30,13 @@ public class PrioritizedTask implements Runnable, Comparable<PrioritizedTask>
 	{
 		try
 		{
+			System.out.print(">>>>" + this+"\n");
 			TimeUnit.MILLISECONDS.sleep(250);
 		}
 		catch (InterruptedException e)
 		{
 
 		}
-		System.out.println("------Do something here by " + this);
 	}
 
 	public String toString()
