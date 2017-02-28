@@ -1,4 +1,4 @@
-package concurrency.newutil;
+package concurrency.concur;
 
 import java.util.ArrayList;
 import java.util.List;
