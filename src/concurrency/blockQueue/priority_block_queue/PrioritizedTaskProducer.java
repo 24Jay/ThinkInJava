@@ -51,7 +51,8 @@ public class PrioritizedTaskProducer implements Runnable
 			/***
 			 * 最后添加一个终结者
 			 */
-			queue.add(new PrioritizedTask.EndSentinel(exe));
+			if (exe != null)
+				queue.add(new PrioritizedTask.EndSentinel(exe));
 		}
 		catch (InterruptedException e)
 		{
