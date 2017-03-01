@@ -16,10 +16,10 @@ public class Fat
 			d += (Math.PI + Math.E) / (double) i;
 		}
 	}
-
-	public void operation()
+	
+	public String toString()
 	{
-		System.out.println("Fat id:" + id);
+		return "Fat["+id+"]";
 	}
 
 }

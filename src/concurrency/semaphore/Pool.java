@@ -37,12 +37,23 @@ public class Pool<T>
 
 	}
 
+	/***
+	 * get a object from the pool<br>
+	 * 
+	 * @return
+	 * @throws InterruptedException
+	 */
 	public T checkOut() throws InterruptedException
 	{
 		available.acquire();
 		return getItem();
 	}
 
+	/***
+	 * return a object to the pool<br>
+	 * 
+	 * @param x
+	 */
 	public void checkIn(T x)
 	{
 		if (releaseItem(x))
