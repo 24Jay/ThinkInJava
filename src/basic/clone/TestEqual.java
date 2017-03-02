@@ -5,6 +5,10 @@ public class TestEqual
 {
 	public static void main(String[] ar)
 	{
+		int[] a= {2,5,5,6,6,8};
+		int[] b= {2,5,5,6,6,8};
+		System.out.println(a==b);
+		
 		stringEqual();
 //		objectEqual();
 		cloneEqual();
