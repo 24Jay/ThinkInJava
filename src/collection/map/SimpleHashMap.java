@@ -1,9 +1,7 @@
 package collection.map;
 
-import java.util.AbstractMap;
 import java.util.LinkedList;
 import java.util.ListIterator;
-import java.util.Set;
 
 /***
  * 自己实现的一个简单的HashMap<br>
