@@ -16,6 +16,12 @@ import java.util.Arrays;
  */
 public class TestClassLoader
 {
+	
+	public void methodForTest()
+	{
+		System.out.println("This is a method for test.");
+	}
+	
 	public static void main(String[] ar) throws InstantiationException, IllegalAccessException
 	{
 		ClassLoader loader = Thread.currentThread().getContextClassLoader();
