@@ -12,6 +12,9 @@ public class ThreadLocalVariableHolder
 	 */
 	private static ThreadLocal<Integer> value = new ThreadLocal<Integer>()
 	{
+		/***
+		 * 这是是为了初始化ThreadLocal,使得每一个线程有自己不同的初始值<br>
+		 */
 		private Random random = new Random(47);
 
 		protected synchronized Integer initialValue()
@@ -38,33 +41,37 @@ public class ThreadLocalVariableHolder
 			exec.execute(new Accessor(i));
 		}
 		TimeUnit.SECONDS.sleep(9);
-		exec.shutdown();
+
+		exec.shutdownNow();
 	}
 }
 
 class Accessor implements Runnable
 {
 	private final int id;
+
 	public Accessor(int id)
 	{
 		this.id = id;
+		System.out.println("--->>>Initial value#" + id + "#" + ThreadLocalVariableHolder.get());
 	}
+
 	@Override
 	public void run()
 	{
-
-			while(!Thread.currentThread().isInterrupted())
+		try
+		{
+			while (!Thread.currentThread().isInterrupted())
 			{
 				ThreadLocalVariableHolder.increment();
-				System.out.println(this);
-				Thread.yield();
+				System.out.println("#" + id + "#" + ThreadLocalVariableHolder.get());
+				TimeUnit.MILLISECONDS.sleep(500);
 			}
+		}
+		catch (InterruptedException e)
+		{
+			System.out.println("Thread interrupted by exe.shutdownNow(), exit from here!");
+		}
 	}
-	
-	
-	public String toString()
-	{
-		return "#"+id+"#"+ThreadLocalVariableHolder.get();
-	}
-	
+
 }

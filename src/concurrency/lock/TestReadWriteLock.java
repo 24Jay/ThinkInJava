@@ -2,6 +2,7 @@ package concurrency.lock;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class TestReadWriteLock
 {
@@ -15,7 +16,16 @@ public class TestReadWriteLock
 			@Override
 			public void run()
 			{
+				try
+				{
+					TimeUnit.SECONDS.sleep(2);
+				}
+				catch (InterruptedException e)
+				{
+					e.printStackTrace();
+				}
 				lock.lockRead();
+
 				System.out.println("There are not ");
 			}
 		});
@@ -28,6 +38,16 @@ public class TestReadWriteLock
 			{
 				lock.lockWrite();
 				System.out.println("write");
+				try
+				{
+					TimeUnit.SECONDS.sleep(2);
+				}
+				catch (InterruptedException e)
+				{
+					e.printStackTrace();
+				}
+				lock.unlockWrite();
+				System.out.println("unlock write!");
 			}
 		});
 
@@ -37,8 +57,19 @@ public class TestReadWriteLock
 			@Override
 			public void run()
 			{
-				lock.lockRead();// .lockWrite();
-				System.out.println("read");
+				try
+				{
+					TimeUnit.SECONDS.sleep(2);
+				}
+				catch (InterruptedException e)
+				{
+					e.printStackTrace();
+				}
+				while (!Thread.interrupted())
+				{
+					lock.lockRead();// .lockWrite();
+					System.out.println("read");
+				}
 			}
 		});
 
