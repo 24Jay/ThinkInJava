@@ -19,7 +19,7 @@ public class TestByteInteger
 		Integer mm = 129;
 		Integer nn = 129;
 		System.out.println(mm == new Integer(129));
-		
+
 		System.out.println(nn == mm);
 	}
 }
