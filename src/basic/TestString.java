@@ -6,8 +6,10 @@ public class TestString
 	{
 		String a = new String("zhangjie");
 		String b = new String("zhangjie");
+		String ac = "zhangjie";
 		System.out.println("a.equals(b) : " + a.equals(b));
 		System.out.println("a == b : " + (a == b));
+		System.out.println("a == ac : " + (a == ac));
 
 		System.out.println("String覆盖了equals方法，但是StringBuffer没有，因此二者会有区别！");
 
