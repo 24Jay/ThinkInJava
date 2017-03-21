@@ -3,6 +3,8 @@ package concurrency.lock;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import concurrency.mywork.MyReentranceLock;
+
 /***
  * If a thread calls outer() there is no problem calling inner() from inside
  * outer(), since both methods (or blocks) are synchronized on the same monitor
