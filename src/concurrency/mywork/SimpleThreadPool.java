@@ -18,7 +18,8 @@ public class SimpleThreadPool
 	private List<Thread> threads = new ArrayList<Thread>();
 
 	private boolean stop = false;
-	
+
+	ExecutorService exee = Executors.newScheduledThreadPool(4);
 	ExecutorService exe = Executors.newCachedThreadPool();
 
 	public SimpleThreadPool(int count, int maxTasks)
@@ -30,28 +31,28 @@ public class SimpleThreadPool
 		}
 
 	}
-	
+
 	Random rang = new Random();
 }
 
 class TaskThread implements Runnable
 {
 	private BlockingQueue tasks = null;
-	
+
 	private boolean stop = false;
-	
+
 	public TaskThread(BlockingQueue qu)
 	{
 		this.tasks = qu;
 	}
-	
+
 	@Override
 	public void run()
 	{
-		while(!stop)
+		while (!stop)
 		{
-			
+
 		}
 	}
-	
+
 }
