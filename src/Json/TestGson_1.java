@@ -2,6 +2,7 @@ package Json;
 
 import java.lang.reflect.Type;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -30,7 +31,7 @@ public class TestGson_1
 		User[] user = gson.fromJson(string, User[].class);
 		System.out.println(Arrays.toString(user));
 
-		String jay = gson.toJson(new User("zjamgkoe", 24, "24zhangjie@gmail.com"));
+		String jay = gson.toJson(new User("zjamgkoe", 24, "24zhangjie@gmail.com",new Date(1925, 12, 30)));
 		System.out.println(jay);
 
 		/***
