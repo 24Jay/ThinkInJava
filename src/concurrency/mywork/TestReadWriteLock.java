@@ -1,4 +1,4 @@
-package concurrency.lock;
+package concurrency.mywork;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

@@ -3,7 +3,11 @@ package collection.map;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.TreeMap;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /***
  * java.util.HashMap<br>
@@ -75,6 +79,7 @@ public class TestMap
 		}
 		linked.put(1, "Java");
 		System.out.println(linked);
+		
 	}
 
 	
@@ -85,6 +90,8 @@ public class TestMap
 	 */
 	private static void testTreeMap()
 	{
+		TreeMap<Integer, String> map = new TreeMap<>();
+		
 
 	}
 }

@@ -29,7 +29,6 @@ public class TestVolatile
 		@Override
 		public void run()
 		{
-			// synchronized (Increment.class)
 
 			for (int i = 0; i < 10; i++)
 			{
@@ -57,7 +56,7 @@ public class TestVolatile
 		 * 注意区分是对class加锁,还是对instance加锁<br>
 		 */
 		@Override
-		public synchronized void run()
+		public  synchronized void run()
 		{
 			for (int i = 0; i < 10; i++)
 			{

@@ -1,4 +1,4 @@
-package concurrency.lock;
+package concurrency.mywork;
 
 public class ReadWriteLock
 {

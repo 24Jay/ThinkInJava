@@ -2,13 +2,16 @@ package network;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.InetAddress;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 public class SocktetTest
 {
-	public static void main(String[] ar)
+	public static void main(String[] ar) throws UnknownHostException
 	{
 		Socket socket = null;
+		
 		try
 		{
 			socket = new Socket("127.0.0.1", 31544);
