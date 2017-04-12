@@ -13,6 +13,18 @@ public class ThinkInSynchronized
 		private static volatile int c = 0;
 		private static volatile int b = 0;
 
+		public synchronized void printA() throws InterruptedException
+		{
+			System.out.println("a = "+a);
+			TimeUnit.SECONDS.sleep(1);
+		}
+		
+		public synchronized void printB() throws InterruptedException
+		{
+			System.out.println("b = "+b);
+			TimeUnit.SECONDS.sleep(1);
+		}
+		
 		private static synchronized void lockClass()
 		{
 			System.out.println("a = " + a++);
