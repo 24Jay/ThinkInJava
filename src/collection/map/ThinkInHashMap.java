@@ -2,10 +2,18 @@ package collection.map;
 
 import java.util.HashMap;
 
+import com.sun.javafx.image.impl.IntArgb;
+import javafx.geometry.HPos;
+import sun.security.action.PutAllAction;
+
 public class ThinkInHashMap
 {
 	private static final int MAXIMUM_CAPACITY = 1 << 30;
 
+	
+	
+	
+	
 	public static void main(String[] ar)
 	{
 		HashMap<Integer, String> map = new HashMap<Integer, String>(10);
@@ -13,6 +21,7 @@ public class ThinkInHashMap
 		thinkInTableSize();
 		thinkInHash();
 
+		
 	}
 
 	private static void thinkInHash()
@@ -101,3 +110,5 @@ public class ThinkInHashMap
 		return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
 	}
 }
+
+
