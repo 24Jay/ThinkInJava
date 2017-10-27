@@ -1,5 +1,7 @@
 package lambda;
 
+import annotation.Foo;
+
 public class TestLambda
 {
 	private IState s;
@@ -19,4 +21,6 @@ public class TestLambda
 		new Thread(() -> System.out.println("the2")).start();
 	}
 
+	
+	
 }
